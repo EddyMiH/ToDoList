@@ -6,4 +6,155 @@
     android:layout_height="match_parent"
     tools:context=".activities.SecondActivity">
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title_text_input_layout_second"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:id="@+id/title_edit_text_second"
+            android:maxLines="1"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/description_text_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/title_text_input_layout_second"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="@dimen/fab_margin"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:id="@+id/description_edit_text_second"
+            android:maxLines="3"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_view_for_date_second"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="Date"
+        android:paddingHorizontal="@dimen/fab_margin"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/description_text_input_layout"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_box_repeat_second"
+        app:layout_constraintTop_toBottomOf="@id/text_view_for_date_second"
+        android:layout_marginTop="@dimen/fab_margin"
+        android:text="Repeat"/>
+
+    <RadioGroup
+        android:id="@+id/RadioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/check_box_repeat_second">
+
+        <RadioButton
+            android:id="@+id/radio_activity_todo_item_daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/fab_margin"
+            android:text="daily"/>
+
+        <RadioButton
+            android:id="@+id/radio_activity_todo_item_weekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/fab_margin"
+
+            android:text="weekly"/>
+
+        <RadioButton
+            android:id="@+id/radio_activity_todo_item_monthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/fab_margin"
+
+            android:text="monthly"
+            />
+
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Priority"
+        android:id="@+id/priority_textView_second"
+        app:layout_constraintTop_toBottomOf="@id/RadioGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"
+        />
+
+    <TextView
+        android:id="@+id/textView_yellow_second"
+        android:layout_width="@dimen/fab_margin"
+        android:layout_height="@dimen/fab_margin"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"
+        android:layout_marginTop="52dp"
+        android:background="@color/colorYellow"
+        app:layout_constraintEnd_toStartOf="@id/textView_orange_second"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
+
+    <TextView
+        android:id="@+id/textView_orange_second"
+        android:layout_width="@dimen/fab_margin"
+        android:layout_height="@dimen/fab_margin"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorOrange"
+        app:layout_constraintEnd_toStartOf="@id/textView_blue_second"
+        app:layout_constraintStart_toEndOf="@id/textView_yellow_second"
+        app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
+    <TextView
+        android:id="@+id/textView_blue_second"
+        android:layout_width="@dimen/fab_margin"
+        android:layout_height="@dimen/fab_margin"
+        android:background="@color/colorBlue"
+        app:layout_constraintTop_toBottomOf="@id/priority_textView_second"
+        app:layout_constraintStart_toEndOf="@id/textView_orange_second"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"/>
+    <TextView
+        android:id="@+id/textView_green_second"
+        android:layout_width="@dimen/fab_margin"
+        android:layout_height="@dimen/fab_margin"
+        android:background="@color/colorGreen"
+        app:layout_constraintTop_toBottomOf="@id/priority_textView_second"
+        app:layout_constraintStart_toEndOf="@id/textView_blue_second"
+        app:layout_constraintEnd_toStartOf="@id/textView_red_second"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"/>
+
+    <TextView
+        android:id="@+id/textView_red_second"
+        android:layout_width="@dimen/fab_margin"
+        android:layout_height="@dimen/fab_margin"
+        android:background="@color/colorRed"
+        app:layout_constraintTop_toBottomOf="@id/priority_textView_second"
+        app:layout_constraintStart_toEndOf="@id/textView_green_second"
+
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"/>
 </android.support.constraint.ConstraintLayout>
