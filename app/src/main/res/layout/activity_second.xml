@@ -50,6 +50,8 @@
         android:text="Date"
         android:paddingHorizontal="@dimen/fab_margin"
         android:maxLines="1"
+        android:clickable="true"
+        android:focusable="false"
         app:layout_constraintTop_toBottomOf="@id/description_text_input_layout"/>
 
     <CheckBox
@@ -64,6 +66,7 @@
         android:id="@+id/RadioGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/check_box_repeat_second">
 
         <RadioButton
@@ -124,6 +127,7 @@
         android:layout_marginVertical="@dimen/fab_margin"
         android:layout_marginTop="12dp"
         android:background="@color/colorOrange"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintEnd_toStartOf="@id/textView_blue_second"
         app:layout_constraintStart_toEndOf="@id/textView_yellow_second"
         app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
@@ -144,6 +148,7 @@
         app:layout_constraintTop_toBottomOf="@id/priority_textView_second"
         app:layout_constraintStart_toEndOf="@id/textView_blue_second"
         app:layout_constraintEnd_toStartOf="@id/textView_red_second"
+        app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginHorizontal="@dimen/fab_margin"
         android:layout_marginVertical="@dimen/fab_margin"/>
 
@@ -154,7 +159,20 @@
         android:background="@color/colorRed"
         app:layout_constraintTop_toBottomOf="@id/priority_textView_second"
         app:layout_constraintStart_toEndOf="@id/textView_green_second"
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
         android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:id="@+id/btn_save_second"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_red_second"
+
         android:layout_marginVertical="@dimen/fab_margin"/>
 </android.support.constraint.ConstraintLayout>

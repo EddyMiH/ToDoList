@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.Date;
+import java.util.Random;
 
 public class ToDoItem implements Parcelable {
 
@@ -12,6 +13,13 @@ public class ToDoItem implements Parcelable {
     public static final int PRIORITY_BLUE = 2;
     public static final int PRIORITY_GREEN = 3;
     public static final int PRIORITY_RED = 4;
+    public static final int MIN_PRIORITY = 0;
+    public static final int MAX_PRIORITY = 4;
+    public static final String DAILY = "Daily";
+    public static final String MONTHLY = "Monthly";
+    public static final String WEEKLY = "Weekly";
+    public static final String NONE = "None";
+
 
     private String title;
     private String description;
@@ -21,7 +29,8 @@ public class ToDoItem implements Parcelable {
     private String repeat;
 
     public ToDoItem(){
-
+        id = new Random().nextLong()%1000000;
+        repeat = NONE;
     }
 
     public void setTitle(String title) {
@@ -71,6 +80,19 @@ public class ToDoItem implements Parcelable {
 
     public String getRepeat() {
         return repeat;
+    }
+
+    @Override
+    public boolean equals( Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if(obj == null){
+            return false;
+        }
+        ToDoItem other = (ToDoItem) obj;
+
+        return other.getId() == this.id ;
     }
 
     @Override

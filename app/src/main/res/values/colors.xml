@@ -8,4 +8,9 @@
     <color name="colorBlue">#008B8B</color>
     <color name="colorGreen">#008000</color>
     <color name="colorRed">#FF0000</color>
+    <color name="colorYellowClicked">#FFD799</color>
+    <color name="colorOrangeClicked">#FF4550</color>
+    <color name="colorBlueClicked">#708B8B</color>
+    <color name="colorGreenClicked">#508000</color>
+    <color name="colorRedClicked">#FF0040</color>
 </resources>
