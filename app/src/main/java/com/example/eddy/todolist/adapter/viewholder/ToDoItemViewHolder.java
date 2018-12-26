@@ -1,6 +1,7 @@
 package com.example.eddy.todolist.adapter.viewholder;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ public class ToDoItemViewHolder extends RecyclerView.ViewHolder {
     public TextView description;
     public TextView date;
     public TextView repeat;
+    public CardView priority;
     private OnItemClickListener mOnItemClickListener;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -32,6 +34,7 @@ public class ToDoItemViewHolder extends RecyclerView.ViewHolder {
         description = itemView.findViewById(R.id.description_view_todo_activity_main);
         date = itemView.findViewById(R.id.date_view_todo_activity_main);
         repeat = itemView.findViewById(R.id.repeat_view_todo_activity_main);
+        priority = itemView.findViewById(R.id.cardView_activity_main);
 
         itemView.setOnClickListener(mOnClickListener);
     }

@@ -1,5 +1,7 @@
 package com.example.eddy.todolist.adapter;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -49,6 +51,23 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
          toDoItemViewHolder.description.setText(todo.getDescription() );
          toDoItemViewHolder.date.setText(formatDateToLongStyle(todo.getDate()) );
          toDoItemViewHolder.repeat.setText(todo.getRepeat());
+         switch (todo.getPriority()){
+             case ToDoItem.PRIORITY_YELLOW:
+                 toDoItemViewHolder.priority.setCardBackgroundColor(Color.YELLOW);
+                 break;
+             case ToDoItem.PRIORITY_BLUE:
+                 toDoItemViewHolder.priority.setCardBackgroundColor(Color.BLUE);
+                 break;
+             case ToDoItem.PRIORITY_GREEN:
+                 toDoItemViewHolder.priority.setCardBackgroundColor(Color.GREEN);
+                 break;
+             case ToDoItem.PRIORITY_RED:
+                 toDoItemViewHolder.priority.setCardBackgroundColor(Color.RED);
+                 break;
+             case ToDoItem.PRIORITY_ORANGE:
+                 toDoItemViewHolder.priority.setCardBackgroundColor(Color.rgb(255, 127, 0));
+                 break;
+         }
 
     }
 

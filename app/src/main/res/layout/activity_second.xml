@@ -96,12 +96,24 @@
     </RadioGroup>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Priority"
+
         android:id="@+id/priority_textView_second"
         app:layout_constraintTop_toBottomOf="@id/RadioGroup"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="white"
+
+        android:id="@+id/priority_index_textView_second"
+        app:layout_constraintTop_toBottomOf="@id/RadioGroup"
+        app:layout_constraintStart_toEndOf="@id/priority_textView_second"
         android:layout_marginHorizontal="@dimen/fab_margin"
         android:layout_marginVertical="@dimen/fab_margin"
         />
@@ -113,31 +125,21 @@
         android:layout_marginHorizontal="@dimen/fab_margin"
         android:layout_marginVertical="@dimen/fab_margin"
         android:layout_marginTop="52dp"
+        android:gravity="center"
         android:background="@color/colorYellow"
-        app:layout_constraintEnd_toStartOf="@id/textView_orange_second"
+        app:layout_constraintEnd_toStartOf="@id/textView_blue_second"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
 
-    <TextView
-        android:id="@+id/textView_orange_second"
-        android:layout_width="@dimen/fab_margin"
-        android:layout_height="@dimen/fab_margin"
-        android:layout_marginHorizontal="@dimen/fab_margin"
-        android:layout_marginVertical="@dimen/fab_margin"
-        android:layout_marginTop="12dp"
-        android:background="@color/colorOrange"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toStartOf="@id/textView_blue_second"
-        app:layout_constraintStart_toEndOf="@id/textView_yellow_second"
-        app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
+
     <TextView
         android:id="@+id/textView_blue_second"
         android:layout_width="@dimen/fab_margin"
         android:layout_height="@dimen/fab_margin"
         android:background="@color/colorBlue"
         app:layout_constraintTop_toBottomOf="@id/priority_textView_second"
-        app:layout_constraintStart_toEndOf="@id/textView_orange_second"
+        app:layout_constraintStart_toEndOf="@id/textView_yellow_second"
         android:layout_marginHorizontal="@dimen/fab_margin"
         android:layout_marginVertical="@dimen/fab_margin"/>
     <TextView

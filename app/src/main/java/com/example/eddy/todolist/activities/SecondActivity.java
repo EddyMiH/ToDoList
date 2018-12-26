@@ -29,6 +29,7 @@ public class SecondActivity extends AppCompatActivity {
     public static final String ARG_TODO = "getToDo";
 
     TextView pickedDate;
+    private TextView colorIndex;
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog datePickerDialog;
     Date dateToDo;
@@ -66,7 +67,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
+        colorIndex = findViewById(R.id.priority_index_textView_second);
         pickedDate = findViewById(R.id.text_view_for_date_second);
         mRepeatCheckBox = (CheckBox) findViewById(R.id.check_box_repeat_second);
         mRepeatRadioGroup = (RadioGroup) findViewById(R.id.RadioGroup);
@@ -116,6 +117,34 @@ public class SecondActivity extends AppCompatActivity {
                         }, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.show();
 
+            }
+        });
+        findViewById(R.id.textView_yellow_second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                priority = ToDoItem.PRIORITY_YELLOW;
+                colorIndex.setText("yellow");
+            }
+        });
+        findViewById(R.id.textView_blue_second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                priority = ToDoItem.PRIORITY_BLUE;
+                colorIndex.setText("Blue");
+            }
+        });
+        findViewById(R.id.textView_green_second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                priority = ToDoItem.PRIORITY_GREEN;
+                colorIndex.setText("Green");
+            }
+        });
+        findViewById(R.id.textView_red_second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                priority = ToDoItem.PRIORITY_RED;
+                colorIndex.setText("Red");
             }
         });
     }
