@@ -13,4 +13,5 @@
     <color name="colorBlueClicked">#708B8B</color>
     <color name="colorGreenClicked">#508000</color>
     <color name="colorRedClicked">#FF0040</color>
+    <color name="colorWhite">#C0C0C0</color>
 </resources>

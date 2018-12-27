@@ -123,7 +123,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_YELLOW;
-                colorIndex.setText("yellow");
+                colorIndex.setText("Yellow");
             }
         });
         findViewById(R.id.textView_blue_second).setOnClickListener(new View.OnClickListener() {
@@ -145,6 +145,13 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_RED;
                 colorIndex.setText("Red");
+            }
+        });
+        findViewById(R.id.textView_white_second).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                priority = ToDoItem.PRIORITY_WHITE;
+                colorIndex.setText("White");
             }
         });
     }

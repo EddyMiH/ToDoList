@@ -52,6 +52,9 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
          toDoItemViewHolder.date.setText(formatDateToLongStyle(todo.getDate()) );
          toDoItemViewHolder.repeat.setText(todo.getRepeat());
          switch (todo.getPriority()){
+             case ToDoItem.PRIORITY_WHITE:
+                 toDoItemViewHolder.priority.setCardBackgroundColor(Color.WHITE);
+                 break;
              case ToDoItem.PRIORITY_YELLOW:
                  toDoItemViewHolder.priority.setCardBackgroundColor(Color.YELLOW);
                  break;

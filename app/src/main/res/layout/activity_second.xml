@@ -119,6 +119,20 @@
         />
 
     <TextView
+        android:id="@+id/textView_white_second"
+        android:layout_width="@dimen/fab_margin"
+        android:layout_height="@dimen/fab_margin"
+        android:layout_marginHorizontal="@dimen/fab_margin"
+        android:layout_marginVertical="@dimen/fab_margin"
+        android:layout_marginTop="52dp"
+        android:gravity="center"
+        android:background="@color/colorWhite"
+        app:layout_constraintEnd_toStartOf="@id/textView_blue_second"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
+
+    <TextView
         android:id="@+id/textView_yellow_second"
         android:layout_width="@dimen/fab_margin"
         android:layout_height="@dimen/fab_margin"
@@ -129,7 +143,7 @@
         android:background="@color/colorYellow"
         app:layout_constraintEnd_toStartOf="@id/textView_blue_second"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_white_second"
         app:layout_constraintTop_toBottomOf="@id/priority_textView_second" />
 
 

@@ -13,7 +13,8 @@ public class ToDoItem implements Parcelable {
     public static final int PRIORITY_BLUE = 2;
     public static final int PRIORITY_GREEN = 3;
     public static final int PRIORITY_RED = 4;
-    public static final int MIN_PRIORITY = 0;
+    public static final int PRIORITY_WHITE = -1;
+    public static final int MIN_PRIORITY = -1;
     public static final int MAX_PRIORITY = 4;
     public static final String DAILY = "Daily";
     public static final String MONTHLY = "Monthly";
