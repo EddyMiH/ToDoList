@@ -178,6 +178,24 @@ public class SecondActivity extends AppCompatActivity {
                     mRepeatCheckBox.setChecked(true);
                     break;
             }
+            switch (mToDoItem.getPriority()){
+                case ToDoItem.PRIORITY_WHITE:
+                    colorIndex.setText("White");
+                    break;
+                case ToDoItem.PRIORITY_YELLOW:
+                    colorIndex.setText("Yellow");
+                    break;
+                case ToDoItem.PRIORITY_BLUE:
+                    colorIndex.setText("Blue");
+                    break;
+                case ToDoItem.PRIORITY_GREEN:
+                    colorIndex.setText("Green");
+                    break;
+                case ToDoItem.PRIORITY_RED:
+                    colorIndex.setText("Red");
+                    break;
+            }
+            priority = mToDoItem.getPriority();
             mRepeatRadioGroup.setVisibility(View.VISIBLE);
     }
 
