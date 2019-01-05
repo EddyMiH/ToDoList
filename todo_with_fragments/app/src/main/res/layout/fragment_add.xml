@@ -189,6 +189,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView_red_second"
+        android:visibility="gone"
 
         android:layout_marginVertical="@dimen/fab_margin"/>
 </android.support.constraint.ConstraintLayout>

@@ -2,19 +2,15 @@ package com.example.eddy.todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Button;
 
-import com.example.eddy.todolist.activities.SecondActivity;
 import com.example.eddy.todolist.adapter.ToDoItemAdapter;
 import com.example.eddy.todolist.fragments.FragmentAdd;
 import com.example.eddy.todolist.model.ToDoItem;
@@ -24,6 +20,9 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
     public static final int REQUEST_CODE_ADD = 100;
     public static final int REQUEST_CODE_EDIT = 101;
     public static final String  CODE_FOR_EDIT = "edit_code";
+
+    private boolean isIncreaseTitle = false;
+    private boolean isIncreaseDate = false;
 
     private ToDoItemAdapter recyclerAdapter;
 
@@ -43,19 +42,6 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
         }
     };
 
-    /*public void upDateAfterEdit(Intent data){
-        findViewById(R.id.container).setVisibility(View.GONE);
-        ToDoItem todoItem = data.getParcelableExtra(FragmentAdd.ARG_TODO);
-        recyclerAdapter.updateItem(todoItem);
-
-    }*/
-
-    /*public void upDateAfterAdd(Intent data){
-        findViewById(R.id.container).setVisibility(View.GONE);
-        ToDoItem todoItem = data.getParcelableExtra(FragmentAdd.ARG_TODO);
-        recyclerAdapter.addItem(todoItem);
-    }*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +57,32 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
         });
         initRecyclerView();
 
+        final Button sortTitle = findViewById(R.id.btn_sort_activity_main);
+        final Button sortDate = findViewById(R.id.btn_sort_date_activity_main);
+
+        sortTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isIncreaseTitle = recyclerAdapter.sortDataByTitle(isIncreaseTitle);
+                if (isIncreaseTitle){
+                    sortTitle.setText("Title Sort(by Decrease)");
+                }else{
+                    sortTitle.setText("Title Sort(by Increase)");
+                }
+            }
+        });
+
+        sortDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isIncreaseDate = recyclerAdapter.sortDataByDate(isIncreaseDate);
+                if (isIncreaseTitle){
+                    sortDate.setText("Date Sort(by Decrease)");
+                }else{
+                    sortDate.setText("Date Sort(by Increase)");
+                }
+            }
+        });
     }
 
     private void initRecyclerView() {

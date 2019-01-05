@@ -15,6 +15,8 @@ import com.example.eddy.todolist.model.ToDoItem;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
@@ -104,6 +106,50 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
 
     public interface OnItemSelectedListener {
         void onItemSelected(ToDoItem todoItem);
+    }
+
+    public boolean sortDataByTitle(boolean isIncrease){
+        if(isIncrease){
+            Collections.sort(mData, new Comparator<ToDoItem>() {
+                @Override
+                public int compare(ToDoItem o1, ToDoItem o2) {
+                    return o1.getTitle().compareTo(o2.getTitle());
+                }
+            });
+            isIncrease = false;
+        }else{
+            Collections.sort(mData, new Comparator<ToDoItem>() {
+                @Override
+                public int compare(ToDoItem o1, ToDoItem o2) {
+                    return o2.getTitle().compareTo(o1.getTitle());
+                }
+            });
+            isIncrease = true;
+        }
+        notifyDataSetChanged();
+        return isIncrease;
+    }
+
+    public boolean sortDataByDate(boolean isIncrease){
+        if(isIncrease){
+            Collections.sort(mData, new Comparator<ToDoItem>() {
+                @Override
+                public int compare(ToDoItem o1, ToDoItem o2) {
+                    return o1.getDate().compareTo(o2.getDate());
+                }
+            });
+            isIncrease = false;
+        }else{
+            Collections.sort(mData, new Comparator<ToDoItem>() {
+                @Override
+                public int compare(ToDoItem o1, ToDoItem o2) {
+                    return o2.getDate().compareTo(o1.getDate());
+                }
+            });
+            isIncrease = true;
+        }
+        notifyDataSetChanged();
+        return isIncrease;
     }
 
 }
