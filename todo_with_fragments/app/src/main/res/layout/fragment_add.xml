@@ -20,7 +20,8 @@
             android:layout_height="wrap_content"
             android:hint="Title"
             android:id="@+id/title_edit_text_second"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -30,8 +31,7 @@
         app:layout_constraintTop_toBottomOf="@id/title_text_input_layout_second"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/fab_margin"
-        >
+        android:layout_marginTop="@dimen/fab_margin">
 
         <EditText
             android:layout_width="match_parent"

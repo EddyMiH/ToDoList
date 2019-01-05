@@ -1,6 +1,5 @@
 package com.example.eddy.todolist.fragments;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,7 +24,6 @@ import android.widget.TextView;
 
 import com.example.eddy.todolist.MainActivity;
 import com.example.eddy.todolist.R;
-import com.example.eddy.todolist.activities.SecondActivity;
 import com.example.eddy.todolist.model.ToDoItem;
 
 import java.text.SimpleDateFormat;
@@ -36,12 +37,12 @@ public class FragmentAdd extends Fragment {
     public static final String ARG_TODO = "getToDo";
     boolean isCalledForEdit = false;
 
+    private Menu mMenu;
     TextView pickedDate;
     private TextView colorIndex;
     Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog datePickerDialog;
     Date dateToDo;
-    //private TextInputEditText title;
     private EditText title;
     private EditText description;
     private CheckBox mRepeatCheckBox;
@@ -205,6 +206,7 @@ public class FragmentAdd extends Fragment {
                 mToDoItem = getArguments().getParcelable(ARG_TODO);//getParcelableExtra(ARG_TODO);
                 setFills(mToDoItem);
                 isCalledForEdit = true;
+                disableFieldsForEdit();
             }
         }
         save_btn.setOnClickListener(new View.OnClickListener() {
@@ -282,6 +284,7 @@ public class FragmentAdd extends Fragment {
                 colorIndex.setText("White");
             }
         });
+
         return rootView;
     }
 
@@ -299,5 +302,61 @@ public class FragmentAdd extends Fragment {
         } catch (ClassCastException e) {
             throw new ClassCastException("Error in retrieving data. Please try again");
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        mMenu = menu;
+        inflater.inflate(R.menu.menu_fragment_edit, menu);
+        menu.findItem(R.id.edit_switch).setVisible(true);
+        if(!isCalledForEdit){
+            mMenu.findItem(R.id.edit_switch).setVisible(false);
+            mMenu.findItem(R.id.save_switch).setVisible(true);
+            mMenu.findItem(R.id.save_switch).setEnabled(true);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.edit_switch:
+                //item.setVisible(false);
+                enableFieldsForEdit();
+                mMenu.findItem(R.id.edit_switch).setVisible(false);
+                mMenu.findItem(R.id.save_switch).setVisible(true);
+                mMenu.findItem(R.id.save_switch).setEnabled(true);
+                break;
+            case R.id.save_switch:
+                item.setVisible(false);
+                mMenu.findItem(R.id.edit_switch).setVisible(true);
+                mMenu.findItem(R.id.save_switch).setEnabled(false);
+                saveData();
+                disableFieldsForEdit();
+                break;
+
+        }
+        return true;
+    }
+
+    public void enableFieldsForEdit(){
+        title.setEnabled(true);
+        description.setEnabled(true);
+        mRepeatCheckBox.setEnabled(true);
+        pickedDate.setEnabled(true);
+        mRepeatRadioGroup.setVisibility(View.VISIBLE);
+    }
+    public void disableFieldsForEdit(){
+        title.setEnabled(false);
+        description.setEnabled(false);
+        mRepeatCheckBox.setEnabled(false);
+        pickedDate.setEnabled(false);
+        mRepeatRadioGroup.setVisibility(View.GONE);
     }
 }
