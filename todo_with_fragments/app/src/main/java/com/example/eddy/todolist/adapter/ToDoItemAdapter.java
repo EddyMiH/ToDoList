@@ -1,13 +1,15 @@
 package com.example.eddy.todolist.adapter;
 
+import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
+import com.example.eddy.todolist.MainActivity;
 import com.example.eddy.todolist.R;
 import com.example.eddy.todolist.adapter.viewholder.ToDoItemViewHolder;
 import com.example.eddy.todolist.model.ToDoItem;
@@ -19,10 +21,17 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 
+import static com.example.eddy.todolist.MainActivity.isInActionMode;
+
 public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
 
     private ArrayList<ToDoItem> mData = new ArrayList<>();
+
+    public CheckBox selectedItems;
+    public ArrayList<ToDoItem> selectedItemsArray = new ArrayList<>();
+
     private OnItemSelectedListener mOnItemSelectedListener;
+    private  OnItemLongClickedListener mOnItemLongClickedListener;
 
     private ToDoItemViewHolder.OnItemClickListener mOnItemClickListener =
             new ToDoItemViewHolder.OnItemClickListener() {
@@ -34,6 +43,15 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
                 }
             };
 
+    private ToDoItemViewHolder.OnItemLongClickListener mOnItemLongClickListener =
+            new ToDoItemViewHolder.OnItemLongClickListener() {
+                @Override
+                public void onItemLongClick() {
+                    if(mOnItemLongClickedListener != null){
+                        mOnItemLongClickedListener.onItemLongClicked();
+                    }
+                }
+            };
 
     @NonNull
     @Override
@@ -41,14 +59,18 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.view_todo_activity_main, viewGroup, false);
         ToDoItemViewHolder viewHolder = new ToDoItemViewHolder(view);
+
+        selectedItems = viewGroup.findViewById(R.id.check_box_multiSelect_remove);
+
         viewHolder.setOnItemClickListener(mOnItemClickListener);
+        viewHolder.setOnLongItemClickListener(mOnItemLongClickListener);
         return viewHolder;
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull ToDoItemViewHolder toDoItemViewHolder, int i) {
-        ToDoItem todo = mData.get(i);
+        final ToDoItem todo = mData.get(i);
          toDoItemViewHolder.title.setText(todo.getTitle() + "\n");
          toDoItemViewHolder.description.setText(todo.getDescription() );
          toDoItemViewHolder.date.setText(formatDateToLongStyle(todo.getDate()) );
@@ -73,12 +95,41 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
                  toDoItemViewHolder.priority.setCardBackgroundColor(Color.rgb(255, 127, 0));
                  break;
          }
+         if(isInActionMode){
+             toDoItemViewHolder.selectingForRemove.setVisibility(View.VISIBLE);
+             toDoItemViewHolder.selectingForRemove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(selectedItemsArray.contains(todo)){
+                        selectedItemsArray.remove(todo);
+                        MainActivity.selectedQuontity--;
+                    }else{
+                        selectedItemsArray.add(todo);
+                        MainActivity.selectedQuontity++;
+                    }
+
+                }
+             });
+         }else{
+             toDoItemViewHolder.selectingForRemove.setVisibility(View.GONE);
+             toDoItemViewHolder.selectingForRemove.setChecked(false);
+         }
 
     }
 
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public void removeItems(){
+        for (int i = 0; i< selectedItemsArray.size(); ++i){
+
+                mData.remove(selectedItemsArray.get(i));
+
+
+        }
+        selectedItemsArray.clear();
     }
 
     public void addItem(ToDoItem toDoItem) {
@@ -104,8 +155,16 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
         mOnItemSelectedListener = onItemSelectedListener;
     }
 
+    public void setOnItemLongClickedListener(OnItemLongClickedListener onItemLongClickedListener) {
+        mOnItemLongClickedListener = onItemLongClickedListener;
+    }
+
     public interface OnItemSelectedListener {
         void onItemSelected(ToDoItem todoItem);
+    }
+
+    public  interface  OnItemLongClickedListener{
+        void onItemLongClicked();
     }
 
     public boolean sortDataByTitle(boolean isIncrease){
