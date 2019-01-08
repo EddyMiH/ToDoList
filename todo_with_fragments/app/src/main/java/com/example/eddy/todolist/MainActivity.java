@@ -8,20 +8,14 @@ import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.TextView;
 
 import com.example.eddy.todolist.adapter.ToDoItemAdapter;
 import com.example.eddy.todolist.fragments.FragmentAdd;
 import com.example.eddy.todolist.model.ToDoItem;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements  FragmentAdd.SendData {
 
@@ -35,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
     public static boolean isInActionMode = false;
     public Toolbar toolbar;
     ActionMode mActionMode;
-    public static int selectedQuontity = 0;
 
     private ToDoItemAdapter recyclerAdapter;
 
@@ -75,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
         @Override
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
             actionMode.getMenuInflater().inflate(R.menu.menu_contextual_delete_activity_main, menu);
-            mActionMode.setTitle(selectedQuontity + " selected");
+            mActionMode.setTitle(0 + " selected");
 
             return true;
         }
@@ -107,12 +100,10 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
     };
 
     public void changeAcionModeTitle(){
-        mActionMode.setTitle(selectedQuontity + " selected");
+        mActionMode.setTitle(recyclerAdapter.getSelectedItemsQuantity() + " selected");
     }
 
     public void deleteCheckedItems(){
-        //TODO remove items( add array list with checked items, out there, and remove from list in  adapter these items)
-        //mActionMode.setTitle(array.size()+string)
         recyclerAdapter.removeItems();
     }
 

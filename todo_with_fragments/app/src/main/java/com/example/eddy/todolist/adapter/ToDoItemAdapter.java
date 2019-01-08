@@ -102,10 +102,8 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
                 public void onClick(View v) {
                     if(selectedItemsArray.contains(todo)){
                         selectedItemsArray.remove(todo);
-                        MainActivity.selectedQuontity--;
                     }else{
                         selectedItemsArray.add(todo);
-                        MainActivity.selectedQuontity++;
                     }
 
                 }
@@ -120,6 +118,10 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public int getSelectedItemsQuantity(){
+        return selectedItemsArray.size();
     }
 
     public void removeItems(){
