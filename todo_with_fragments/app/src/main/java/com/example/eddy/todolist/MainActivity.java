@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
         @Override
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
             actionMode.getMenuInflater().inflate(R.menu.menu_contextual_delete_activity_main, menu);
-            mActionMode.setTitle(0 + " selected");
+            //mActionMode.setTitle(0 + " selected");
 
             return true;
         }
