@@ -22,8 +22,8 @@
         android:id="@+id/title_view_todo_activity_main"
         android:textStyle="bold"
         android:textAllCaps="true"
-        android:text="test"
-        android:textSize="30dp"/>
+        android:text="@string/test_title"
+        android:textSize="@dimen/text_size_todo_recycler_item_title_activity_main"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:textDirection="inherit"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textSize="15dp"
+        android:textSize="@dimen/text_size_todo_recycler_item_activity_main"
         app:layout_constraintTop_toBottomOf="@+id/title_view_todo_activity_main"/>
     <TextView
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
         android:id="@+id/date_view_todo_activity_main"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="15dp"
+        android:textSize="@dimen/text_size_todo_recycler_item_activity_main"
         app:layout_constraintTop_toBottomOf="@+id/description_view_todo_activity_main"/>
     <TextView
         android:layout_width="match_parent"
@@ -48,7 +48,7 @@
         android:id="@+id/repeat_view_todo_activity_main"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="15dp"
+        android:textSize="@dimen/text_size_todo_recycler_item_activity_main"
         app:layout_constraintTop_toBottomOf="@+id/date_view_todo_activity_main"/>
     <CheckBox
         android:layout_width="wrap_content"

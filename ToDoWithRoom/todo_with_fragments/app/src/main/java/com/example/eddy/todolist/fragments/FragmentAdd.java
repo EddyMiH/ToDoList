@@ -102,19 +102,19 @@ public class FragmentAdd extends Fragment {
         }
         switch (mToDoItem.getPriority()){
             case ToDoItem.PRIORITY_WHITE:
-                colorIndex.setText("White");
+                colorIndex.setText(R.string.white);
                 break;
             case ToDoItem.PRIORITY_YELLOW:
-                colorIndex.setText("Yellow");
+                colorIndex.setText(R.string.yellow_color);
                 break;
             case ToDoItem.PRIORITY_BLUE:
-                colorIndex.setText("Blue");
+                colorIndex.setText(R.string.blue_color);
                 break;
             case ToDoItem.PRIORITY_GREEN:
-                colorIndex.setText("Green");
+                colorIndex.setText(R.string.green_color);
                 break;
             case ToDoItem.PRIORITY_RED:
-                colorIndex.setText("Red");
+                colorIndex.setText(R.string.red_color);
                 break;
         }
         priority = mToDoItem.getPriority();
@@ -252,7 +252,8 @@ public class FragmentAdd extends Fragment {
 
                                 String date1 = dayOfMonth + "/"
                                         + (monthOfYear + 1) + "/" + year;
-                                pickedDate.setText("Date: " + date1);
+                                String str = R.string.date_label + date1;
+                                pickedDate.setText(str);
                                 try{
                                     dateToDo = new SimpleDateFormat("MM/dd/yyyy").parse(date1);
                                 }catch (Exception ex){
@@ -269,35 +270,35 @@ public class FragmentAdd extends Fragment {
             @Override
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_YELLOW;
-                colorIndex.setText("Yellow");
+                colorIndex.setText(R.string.yellow_color);
             }
         });
         rootView.findViewById(R.id.textView_blue_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_BLUE;
-                colorIndex.setText("Blue");
+                colorIndex.setText(R.string.blue_color);
             }
         });
         rootView.findViewById(R.id.textView_green_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_GREEN;
-                colorIndex.setText("Green");
+                colorIndex.setText(R.string.green_color);
             }
         });
         rootView.findViewById(R.id.textView_red_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_RED;
-                colorIndex.setText("Red");
+                colorIndex.setText(R.string.red_color);
             }
         });
         rootView.findViewById(R.id.textView_white_second).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 priority = ToDoItem.PRIORITY_WHITE;
-                colorIndex.setText("White");
+                colorIndex.setText(R.string.white);
             }
         });
 

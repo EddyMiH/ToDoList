@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">ToDoList</string>
     <string name="action_settings">Settings</string>
+    <string name="title_btn_sort_by_title_default">Title Sort(by increase)</string>
+    <string name="title_btn_sort_by_date_default">Date Sort(by increase)</string>
+    <string name="title_hint_fragment_add">Title</string>
+    <string name="description_hint_fragment_add">Description</string>
+    <string name="date_picker_label_fragment_add">Date</string>
+    <string name="repeat_check_box_label_fragment_add">Repeat</string>
+    <string name="repeat_radio_btn_daily_label_fragment_add">Daily</string>
+    <string name="repeat_radio_btn_weekly_label_fragment_add">Weekly</string>
+    <string name="repeat_radio_btn_monthly_label_fragment_add">Monthly</string>
+    <string name="priority_label_fragment_add">Priority</string>
+    <string name="priority_white_label_fragment_add">White</string>
+    <string name="test_title">Test</string>
+    <string name="white">White</string>
+    <string name="red_color">Red</string>
+    <string name="green_color">Green</string>
+    <string name="blue_color">Blue</string>
+    <string name="yellow_color">Yellow</string>
+    <string name="date_label">Date</string>
 </resources>

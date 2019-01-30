@@ -21,11 +21,11 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title Sort(by increase)"
-                android:textSize="11dp"
+                android:text="@string/title_btn_sort_by_title_default"
+                android:textSize="@dimen/text_size_content_main"
                 android:background="@color/colorBlueClicked"
                 android:id="@+id/btn_sort_activity_main"
-                android:paddingHorizontal="10dp"
+                android:paddingHorizontal="@dimen/padding_horizontal_content_main"
                 android:layout_margin="5.0dp"
                 />
 
@@ -35,9 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5.0dp"
                 android:background="@color/colorBlueClicked"
-                android:text="Date Sort(by increase)"
-                android:textSize="11dp"
-                android:paddingHorizontal="10dp"
+                android:text="@string/title_btn_sort_by_date_default"
+                android:textSize="@dimen/text_size_content_main"
+                android:paddingHorizontal="@dimen/padding_horizontal_content_main"
                  />
         </LinearLayout>
 

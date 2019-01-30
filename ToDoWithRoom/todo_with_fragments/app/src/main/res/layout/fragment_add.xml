@@ -18,7 +18,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Title"
+            android:hint="@string/title_hint_fragment_add"
             android:id="@+id/title_edit_text_second"
             android:maxLines="1"
             />
@@ -36,7 +36,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Description"
+            android:hint="@string/description_hint_fragment_add"
             android:id="@+id/description_edit_text_second"
             android:maxLines="3"/>
     </android.support.design.widget.TextInputLayout>
@@ -47,7 +47,7 @@
         android:id="@+id/text_view_for_date_second"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="@dimen/fab_margin"
-        android:text="Date"
+        android:text="@string/date_picker_label_fragment_add"
         android:paddingHorizontal="@dimen/fab_margin"
         android:maxLines="1"
         android:clickable="true"
@@ -60,7 +60,7 @@
         android:id="@+id/check_box_repeat_second"
         app:layout_constraintTop_toBottomOf="@id/text_view_for_date_second"
         android:layout_marginTop="@dimen/fab_margin"
-        android:text="Repeat"/>
+        android:text="@string/repeat_check_box_label_fragment_add"/>
 
     <RadioGroup
         android:id="@+id/RadioGroup"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/fab_margin"
-            android:text="daily"/>
+            android:text="@string/repeat_radio_btn_daily_label_fragment_add"/>
 
         <RadioButton
             android:id="@+id/radio_activity_todo_item_weekly"
@@ -82,24 +82,21 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/fab_margin"
 
-            android:text="weekly"/>
+            android:text="@string/repeat_radio_btn_daily_label_fragment_add"/>
 
         <RadioButton
             android:id="@+id/radio_activity_todo_item_monthly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/fab_margin"
-
-            android:text="monthly"
-            />
+            android:text="@string/repeat_radio_btn_monthly_label_fragment_add" />
 
     </RadioGroup>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Priority"
-
+        android:text="@string/priority_label_fragment_add"
         android:id="@+id/priority_textView_second"
         app:layout_constraintTop_toBottomOf="@id/RadioGroup"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,8 +106,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="white"
-
+        android:text="@string/priority_white_label_fragment_add"
         android:id="@+id/priority_index_textView_second"
         app:layout_constraintTop_toBottomOf="@id/RadioGroup"
         app:layout_constraintStart_toEndOf="@id/priority_textView_second"
