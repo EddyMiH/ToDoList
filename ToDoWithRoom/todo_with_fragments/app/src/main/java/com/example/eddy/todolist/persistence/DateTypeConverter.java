@@ -1,4 +1,4 @@
-package com.example.eddy.todolist.database;
+package com.example.eddy.todolist.persistence;
 
 import android.arch.persistence.room.TypeConverter;
 

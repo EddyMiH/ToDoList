@@ -1,18 +1,17 @@
 package com.example.eddy.todolist.adapter;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import com.example.eddy.todolist.MainActivity;
 import com.example.eddy.todolist.R;
 import com.example.eddy.todolist.adapter.viewholder.ToDoItemViewHolder;
-import com.example.eddy.todolist.database.AppDatabase;
+import com.example.eddy.todolist.persistence.AppDatabase;
 import com.example.eddy.todolist.model.ToDoItem;
 
 import java.text.DateFormat;
@@ -137,18 +136,31 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
     }
 
     public void removeItems(){
-        for (int i = 0; i< selectedItemsArray.size(); ++i){
-
-            database.toDoDao().deleteOneRow(selectedItemsArray.get(i));
+        Log.d(ToDoItemAdapter.class.getSimpleName(),"selectedItemsArray size in removeItems method: " + selectedItemsArray.size());
+        for (int i = 0; i < selectedItemsArray.size(); ++i){
+            final int index = i;
+            final ToDoItem tempItem = selectedItemsArray.get(i);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    database.toDoDao().deleteOneRow(tempItem);
+                }
+            }).start();
+            //database.toDoDao().deleteOneRow(selectedItemsArray.get(i));
             mData.remove(selectedItemsArray.get(i));
 
         }
         selectedItemsArray.clear();
     }
 
-    public void addItem(ToDoItem toDoItem) {
+    public void addItem(final ToDoItem toDoItem) {
         mData.add(toDoItem);
-        database.toDoDao().addToDo(toDoItem);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                database.toDoDao().addToDo(toDoItem);            }
+        }).start();
+        //database.toDoDao().addToDo(toDoItem);
         notifyItemInserted(mData.size() - 1);
     }
 
@@ -156,8 +168,14 @@ public class ToDoItemAdapter extends RecyclerView.Adapter<ToDoItemViewHolder> {
 
         for (int i = 0; i < mData.size(); i++) {
             if (item.equals( mData.get(i))) {
+                final int index = i;
                 mData.set(i, item);
-                database.toDoDao().upDateItem(mData.get(i));
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        database.toDoDao().upDateItem(mData.get(index));           }
+                }).start();
+                //database.toDoDao().upDateItem(mData.get(i));
                 notifyItemChanged(i);
             }
         }

@@ -7,10 +7,9 @@ import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.eddy.todolist.database.DateTypeConverter;
+import com.example.eddy.todolist.persistence.DateTypeConverter;
 
 import java.util.Date;
-import java.util.Random;
 
 
 @Entity(tableName = "todo_table")

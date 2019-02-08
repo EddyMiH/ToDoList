@@ -1,7 +1,6 @@
 package com.example.eddy.todolist.fragments;
 
 import android.app.DatePickerDialog;
-import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +24,7 @@ import android.widget.TextView;
 
 import com.example.eddy.todolist.MainActivity;
 import com.example.eddy.todolist.R;
-import com.example.eddy.todolist.database.AppDatabase;
+import com.example.eddy.todolist.persistence.AppDatabase;
 import com.example.eddy.todolist.model.ToDoItem;
 
 import java.text.SimpleDateFormat;

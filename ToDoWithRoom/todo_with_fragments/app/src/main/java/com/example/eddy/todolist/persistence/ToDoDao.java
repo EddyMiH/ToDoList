@@ -1,4 +1,4 @@
-package com.example.eddy.todolist.database;
+package com.example.eddy.todolist.persistence;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -25,10 +25,10 @@ public interface ToDoDao {
     void deleteOneRow(ToDoItem toDoItem);
 
     @Query("SELECT * FROM todo_table ORDER BY title ASC")
-    void orderByTitle();
+    List<ToDoItem>  orderByTitle();
 
     @Query("SELECT * FROM todo_table ORDER BY title DESC")
-    void orderByTitleDec();
+    List<ToDoItem> orderByTitleDec();
 
     @Update
     void upDateItem(ToDoItem toDoItem);

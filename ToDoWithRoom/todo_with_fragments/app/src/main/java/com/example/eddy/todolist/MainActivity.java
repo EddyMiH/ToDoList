@@ -3,6 +3,7 @@ package com.example.eddy.todolist;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
@@ -15,9 +16,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.eddy.todolist.adapter.ToDoItemAdapter;
-import com.example.eddy.todolist.database.AppDatabase;
+import com.example.eddy.todolist.persistence.AppDatabase;
 import com.example.eddy.todolist.fragments.FragmentAdd;
 import com.example.eddy.todolist.model.ToDoItem;
+import com.example.eddy.todolist.persistence.DatabaseWrapper;
 
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
     public Toolbar toolbar;
     ActionMode mActionMode;
 
-    public AppDatabase db;
+    public AppDatabase db; // = DatabaseWrapper.getAppDatabace();
     List<ToDoItem> dbData;
 
     private ToDoItemAdapter recyclerAdapter;
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DatabaseWrapper.create(this);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -128,10 +131,18 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
             }
         });
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "todo_table")
-                .allowMainThreadQueries().build();
-        dbData =  db.toDoDao().getAllToDoItems();
-        initRecyclerView();
+//        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "todo_table")
+//                .allowMainThreadQueries().build();
+        db = DatabaseWrapper.getAppDatabace();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                dbData =  db.toDoDao().getAllToDoItems();
+            }
+        }).start();
+        //dbData =  db.toDoDao().getAllToDoItems();
+
 
         final Button sortTitle = findViewById(R.id.btn_sort_activity_main);
         final Button sortDate = findViewById(R.id.btn_sort_date_activity_main);
@@ -139,14 +150,27 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
         sortTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isIncreaseTitle = recyclerAdapter.sortDataByTitle(isIncreaseTitle);
                 if (isIncreaseTitle){
                     sortTitle.setText("Title Sort(by Decrease)");
-                    db.toDoDao().orderByTitleDec();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            db.toDoDao().orderByTitleDec();
+                        }
+                    }).start();
+                    //db.toDoDao().orderByTitleDec();
                 }else{
                     sortTitle.setText("Title Sort(by Increase)");
-                    db.toDoDao().orderByTitle();
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            db.toDoDao().orderByTitle();
+                        }
+                    }).start();
+                    //db.toDoDao().orderByTitle();
                 }
+                isIncreaseTitle = recyclerAdapter.sortDataByTitle(isIncreaseTitle);
+
             }
         });
 
@@ -161,6 +185,12 @@ public class MainActivity extends AppCompatActivity implements  FragmentAdd.Send
                 }
             }
         });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                initRecyclerView();
+            }
+        }, 1000);
     }
 
     private void initRecyclerView() {
